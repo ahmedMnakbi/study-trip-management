@@ -1,5 +1,6 @@
 <section class="auth-shell">
-    <div>
+    <div class="auth-visual">
+        <img src="<?= e(asset('assets/img/campus-hero.jpg')) ?>" alt="Etudiants preparant un projet academique">
         <p class="eyebrow">Connexion securisee</p>
         <h1>Acceder a la plateforme</h1>
         <p class="lede">Connectez-vous pour consulter les voyages, suivre les inscriptions ou gerer les validations selon votre role.</p>
@@ -15,7 +16,10 @@
         <?php endif; ?>
 
         <label for="mot_de_passe">Mot de passe</label>
-        <input id="mot_de_passe" type="password" name="mot_de_passe" required>
+        <div class="password-field">
+            <input id="mot_de_passe" type="password" name="mot_de_passe" required>
+            <button class="button small secondary" type="button" data-toggle-password="mot_de_passe">Afficher</button>
+        </div>
         <?php if (isset($errors['mot_de_passe'])): ?>
             <p class="field-error"><?= e($errors['mot_de_passe']) ?></p>
         <?php endif; ?>

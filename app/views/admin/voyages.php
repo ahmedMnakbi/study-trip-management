@@ -40,12 +40,12 @@
                                 <input type="hidden" name="id_voyage" value="<?= e((string) $voyage['id_voyage']) ?>">
                                 <button class="button small" type="submit">Valider</button>
                             </form>
-                            <form method="post" action="<?= e(url('admin/voyage/refuse')) ?>">
+                            <form method="post" action="<?= e(url('admin/voyage/refuse')) ?>" data-confirm="Refuser ce voyage ?">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="id_voyage" value="<?= e((string) $voyage['id_voyage']) ?>">
                                 <button class="button small danger" type="submit">Refuser</button>
                             </form>
-                            <form method="post" action="<?= e(url('admin/voyage/archive')) ?>">
+                            <form method="post" action="<?= e(url('admin/voyage/archive')) ?>" data-confirm="Archiver ce voyage ?">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="id_voyage" value="<?= e((string) $voyage['id_voyage']) ?>">
                                 <button class="button small secondary" type="submit">Archiver</button>

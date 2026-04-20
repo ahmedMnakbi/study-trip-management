@@ -1184,7 +1184,20 @@ Important CSS classes:
 
 ## assets/js/app.js
 
-Small JavaScript file for mobile menu.
+JavaScript file for simple client-side interactions.
+
+It contains:
+
+- mobile menu toggle
+- live voyage search
+- password show/hide button
+- password length hint
+- voyage form validation
+- character counter
+- upload file information
+- confirmation prompts
+
+### Mobile menu
 
 It finds:
 
@@ -1197,6 +1210,54 @@ Then opens/closes menu:
 
 ```js
 menu.classList.toggle('open');
+```
+
+### Live search
+
+It uses:
+
+```js
+data-live-search
+data-search-card
+data-search-text
+```
+
+When the user types in the search input, JavaScript hides cards that do not match the text.
+
+### Password toggle
+
+It uses:
+
+```js
+data-toggle-password
+```
+
+The button changes the input type from `password` to `text` and back.
+
+### Form validation
+
+It checks simple errors before sending the form:
+
+- return date before departure date
+- negative budget
+- invalid number of places
+
+PHP still performs the real server-side validation.
+
+### File upload hint
+
+It checks the selected file name, extension and size before upload.
+
+Accepted extensions:
+
+```text
+pdf, jpg, jpeg, png
+```
+
+Maximum size:
+
+```text
+5 Mo
 ```
 
 ## 8. Database

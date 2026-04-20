@@ -12,6 +12,8 @@ La plateforme realisee permet de centraliser la gestion des voyages d'etudes dan
 - Architecture : MVC maison sans framework
 - Serveur local : XAMPP
 
+La partie JavaScript reste volontairement simple et adaptee au niveau du projet. Elle ajoute de l'interaction cote client : recherche instantanee, affichage/masquage du mot de passe, validation simple de formulaire, informations sur les fichiers uploades et confirmations avant actions sensibles.
+
 ## 3. Architecture logicielle
 
 Le projet suit une organisation MVC :
@@ -146,6 +148,7 @@ Le projet montre deja les elements essentiels attendus :
 - une base de donnees relationnelle ;
 - une architecture MVC simple ;
 - une interface HTML/CSS/JavaScript ;
+- des interactions JavaScript utiles et simples ;
 - des formulaires dynamiques en PHP ;
 - une authentification avec roles ;
 - des regles metier claires ;

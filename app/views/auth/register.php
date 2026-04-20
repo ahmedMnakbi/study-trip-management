@@ -1,5 +1,6 @@
 <section class="auth-shell">
-    <div>
+    <div class="auth-visual">
+        <img src="<?= e(asset('assets/img/campus-hero.jpg')) ?>" alt="Groupe d'etudiants sur un campus">
         <p class="eyebrow">Compte etudiant</p>
         <h1>Creer votre compte</h1>
         <p class="lede">Un compte etudiant permet de consulter les voyages valides et d'envoyer une demande d'inscription.</p>
@@ -27,7 +28,11 @@
         <?php endif; ?>
 
         <label for="mot_de_passe">Mot de passe</label>
-        <input id="mot_de_passe" type="password" name="mot_de_passe" minlength="6" required>
+        <div class="password-field">
+            <input id="mot_de_passe" type="password" name="mot_de_passe" minlength="6" required data-min-length="6">
+            <button class="button small secondary" type="button" data-toggle-password="mot_de_passe">Afficher</button>
+        </div>
+        <p class="js-hint" data-password-hint>6 caracteres minimum.</p>
         <?php if (isset($errors['mot_de_passe'])): ?>
             <p class="field-error"><?= e($errors['mot_de_passe']) ?></p>
         <?php endif; ?>

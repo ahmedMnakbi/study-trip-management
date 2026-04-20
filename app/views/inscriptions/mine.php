@@ -58,7 +58,8 @@
                                 <input id="type_document_<?= e((string) $inscription['id_inscription']) ?>" type="text" name="type_document" placeholder="Autorisation, carte..." required>
 
                                 <label for="document_<?= e((string) $inscription['id_inscription']) ?>">Fichier</label>
-                                <input id="document_<?= e((string) $inscription['id_inscription']) ?>" type="file" name="document" accept=".pdf,.jpg,.jpeg,.png" required>
+                                <input id="document_<?= e((string) $inscription['id_inscription']) ?>" type="file" name="document" accept=".pdf,.jpg,.jpeg,.png" required data-file-check>
+                                <p class="js-hint" data-file-hint>Formats acceptes : PDF, JPG, JPEG, PNG. Taille maximale : 5 Mo.</p>
 
                                 <button class="button small" type="submit">Deposer</button>
                             </form>

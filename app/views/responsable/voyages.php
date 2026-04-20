@@ -37,7 +37,7 @@
                             <a class="button small secondary" href="<?= e(url('responsable/voyage/edit', ['id' => $voyage['id_voyage']])) ?>">Modifier</a>
                             <a class="button small secondary" href="<?= e(url('responsable/inscriptions', ['id' => $voyage['id_voyage']])) ?>">Inscriptions</a>
                             <?php if ($voyage['statut'] !== 'archive'): ?>
-                                <form method="post" action="<?= e(url('responsable/voyage/archive')) ?>">
+                                <form method="post" action="<?= e(url('responsable/voyage/archive')) ?>" data-confirm="Archiver ce voyage ?">
                                     <?= csrf_field() ?>
                                     <input type="hidden" name="id" value="<?= e((string) $voyage['id_voyage']) ?>">
                                     <button class="button small danger" type="submit">Archiver</button>

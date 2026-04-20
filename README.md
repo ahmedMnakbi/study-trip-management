@@ -23,6 +23,20 @@ Le projet est volontairement garde simple pour un niveau premiere annee : il cou
 - Statistiques simples dans le tableau de bord admin
 - Protection CSRF sur les formulaires sensibles
 - Requetes SQL preparees avec PDO
+- Interactions JavaScript simples : recherche instantanee, affichage du mot de passe, validation cote client, apercu de fichier, confirmations
+
+## Partie JavaScript
+
+Le projet utilise JavaScript pour ameliorer l'experience utilisateur sans remplacer les validations PHP :
+
+- recherche instantanee dans les cartes de voyages ;
+- bouton afficher/masquer le mot de passe ;
+- aide visuelle pour la longueur du mot de passe ;
+- validation simple des dates, du budget et du nombre de places ;
+- affichage du nom et de la taille du fichier avant upload ;
+- confirmation avant les actions sensibles comme refuser ou archiver.
+
+Les controles importants restent aussi verifies cote serveur avec PHP.
 
 ## Installation avec XAMPP ou WAMP
 
@@ -131,3 +145,7 @@ Cette version doit s'arreter ici pour rester claire et defendable :
 - pas de tableau de bord complexe.
 
 Ces points peuvent etre cites comme perspectives d'evolution pendant la presentation.
+
+## Images
+
+Les images locales dans `assets/img/` servent uniquement a donner une ambiance education/voyage aux pages publiques. Elles peuvent etre remplacees facilement sans modifier la logique PHP.
