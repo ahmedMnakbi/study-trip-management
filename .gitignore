@@ -1,0 +1,9 @@
+/uploads/*
+!/uploads/.gitkeep
+!/uploads/documents/
+/uploads/documents/*
+!/uploads/documents/.htaccess
+!/uploads/documents/.gitkeep
+*.log
+.DS_Store
+Thumbs.db
