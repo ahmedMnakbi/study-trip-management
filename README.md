@@ -59,6 +59,25 @@ Puis ouvrir :
 http://127.0.0.1:8000/public/index.php
 ```
 
+### Lancement rapide avec Apache
+
+Un script est disponible a la racine du projet :
+
+```text
+start-apache-version.bat
+```
+
+Ce script :
+
+- cree un lien dans `C:\xampp\htdocs\study-trip-management` vers ce dossier ;
+- demarre MySQL/MariaDB si besoin ;
+- demarre Apache si besoin ;
+- ouvre automatiquement :
+
+```text
+http://localhost/study-trip-management/public/index.php
+```
+
 Alternative avec Apache :
 
 1. Copier ce dossier dans le repertoire web local :
