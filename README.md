@@ -163,7 +163,6 @@ Cette version doit s'arreter ici pour rester claire et defendable :
 - pas de framework PHP ;
 - pas de tableau de bord complexe.
 
-Ces points peuvent etre cites comme perspectives d'evolution pendant la presentation.
 
 ## Images
 
