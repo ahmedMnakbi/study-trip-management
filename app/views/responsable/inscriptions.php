@@ -32,14 +32,14 @@
                         <td><?= e($inscription['date_inscription']) ?></td>
                         <td><span class="badge <?= e($inscription['statut']) ?>"><?= e(status_label($inscription['statut'])) ?></span></td>
                         <td class="actions">
-                            <form method="post" action="<?= e(url('inscription/status')) ?>" data-confirm="Refuser cette inscription ?">
+                            <form method="post" action="<?= e(url('inscription/status')) ?>" data-confirm="Valider cette inscription ?">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="id_inscription" value="<?= e((string) $inscription['id_inscription']) ?>">
                                 <input type="hidden" name="id_voyage" value="<?= e((string) $voyage['id_voyage']) ?>">
                                 <input type="hidden" name="statut" value="valide">
                                 <button class="button small" type="submit">Valider</button>
                             </form>
-                            <form method="post" action="<?= e(url('inscription/status')) ?>">
+                            <form method="post" action="<?= e(url('inscription/status')) ?>" data-confirm="Refuser cette inscription ?">
                                 <?= csrf_field() ?>
                                 <input type="hidden" name="id_inscription" value="<?= e((string) $inscription['id_inscription']) ?>">
                                 <input type="hidden" name="id_voyage" value="<?= e((string) $voyage['id_voyage']) ?>">
