@@ -71,6 +71,9 @@ Ce script :
 
 - cree un lien dans `C:\xampp\htdocs\study-trip-management` vers ce dossier ;
 - demarre MySQL/MariaDB si besoin ;
+- verifie que la base `gestion_voyages_etudes` existe ;
+- importe automatiquement `database/schema.sql` si la base ou les tables manquent ;
+- importe `database/seed.sql` seulement si la table `users` est vide ;
 - demarre Apache si besoin ;
 - ouvre automatiquement :
 
