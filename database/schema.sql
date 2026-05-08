@@ -19,7 +19,9 @@ CREATE TABLE IF NOT EXISTS users (
   role ENUM('etudiant', 'responsable', 'admin') NOT NULL DEFAULT 'etudiant',
   statut ENUM('actif', 'inactif') NOT NULL DEFAULT 'actif',
   date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS voyages (
   id_voyage INT AUTO_INCREMENT PRIMARY KEY,
@@ -34,9 +36,13 @@ CREATE TABLE IF NOT EXISTS voyages (
   id_responsable INT NOT NULL,
   date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT fk_voyages_responsable
-    FOREIGN KEY (id_responsable) REFERENCES users(id_user)
-    ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    FOREIGN KEY (id_responsable)
+    REFERENCES users(id_user)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS inscriptions (
   id_inscription INT AUTO_INCREMENT PRIMARY KEY,
@@ -45,13 +51,19 @@ CREATE TABLE IF NOT EXISTS inscriptions (
   date_inscription DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   statut ENUM('en_attente', 'valide', 'refuse', 'annule') NOT NULL DEFAULT 'en_attente',
   CONSTRAINT fk_inscriptions_user
-    FOREIGN KEY (id_user) REFERENCES users(id_user)
-    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_user)
+    REFERENCES users(id_user)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_inscriptions_voyage
-    FOREIGN KEY (id_voyage) REFERENCES voyages(id_voyage)
-    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_voyage)
+    REFERENCES voyages(id_voyage)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   UNIQUE KEY uniq_inscription_user_voyage (id_user, id_voyage)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS documents (
   id_document INT AUTO_INCREMENT PRIMARY KEY,
@@ -63,9 +75,15 @@ CREATE TABLE IF NOT EXISTS documents (
   statut ENUM('en_attente', 'valide', 'refuse') NOT NULL DEFAULT 'en_attente',
   date_upload DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT fk_documents_user
-    FOREIGN KEY (id_user) REFERENCES users(id_user)
-    ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (id_user)
+    REFERENCES users(id_user)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT fk_documents_voyage
-    FOREIGN KEY (id_voyage) REFERENCES voyages(id_voyage)
-    ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+    FOREIGN KEY (id_voyage)
+    REFERENCES voyages(id_voyage)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+) ENGINE=InnoDB
+  DEFAULT CHARSET=utf8mb4
+  COLLATE=utf8mb4_unicode_ci;

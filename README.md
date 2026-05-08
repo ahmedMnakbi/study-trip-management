@@ -38,11 +38,11 @@ Mot de passe pour tous les comptes :
 password
 ```
 
-| Role | Email |
-| --- | --- |
-| Administrateur | admin@example.com |
-| Responsable | responsable@example.com |
-| Etudiant | etudiant@example.com |
+| Role            | Email                   |
+|-----------------|-------------------------|
+| Administrateur  | admin@example.com       |
+| Responsable     | responsable@example.com |
+| Etudiant        | etudiant@example.com    |
 
 Les mots de passe sont stockes sous forme hashee dans `database/seed.sql`.
 
@@ -59,18 +59,18 @@ Les mots de passe sont stockes sous forme hashee dans `database/seed.sql`.
 
 ## Correspondance avec les notions du cours
 
-| Notion etudiee | Utilisation dans le projet |
-| --- | --- |
-| HTML/CSS | Pages, formulaires, tableaux, navigation |
-| JavaScript et DOM | Validation des formulaires dans `assets/js/validation.js` |
-| PHP basics | Conditions, tableaux, fonctions, includes |
-| `$_GET` | Lire les identifiants dans les pages de detail |
-| `$_POST` | Traiter les formulaires de connexion, inscription, validation |
-| `$_FILES` | Upload des documents et `move_uploaded_file` |
-| POO | Classes `User`, `Voyage`, `Inscription`, `Document` |
-| PDO/MySQL | CRUD et requetes preparees |
-| Sessions | Authentification, role connecte, messages flash |
-| Roles | Pages protegees pour etudiant, responsable, admin |
+| Notion etudiee  | Utilisation dans le projet                                      |
+|-----------------|------------------------------------------------------------------|
+| HTML/CSS        | Pages, formulaires, tableaux, navigation                         |
+| JavaScript/DOM  | Validation des formulaires dans `assets/js/validation.js`         |
+| PHP basics      | Conditions, tableaux, fonctions, includes                         |
+| `$_GET`         | Lire les identifiants dans les pages de detail                    |
+| `$_POST`        | Traiter les formulaires de connexion, inscription, validation     |
+| `$_FILES`       | Upload des documents et `move_uploaded_file`                      |
+| POO             | Classes `User`, `Voyage`, `Inscription`, `Document`               |
+| PDO/MySQL       | CRUD et requetes preparees                                        |
+| Sessions        | Authentification, role connecte, messages flash                   |
+| Roles           | Pages protegees pour etudiant, responsable, admin                 |
 
 ## Tests manuels par role
 
@@ -121,4 +121,3 @@ Les mots de passe sont stockes sous forme hashee dans `database/seed.sql`.
 - Pagination des grandes listes.
 - Notifications email.
 - Recherche plus avancee.
-

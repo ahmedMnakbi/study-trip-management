@@ -141,8 +141,8 @@ class Voyage
     private function selectBase()
     {
         return "SELECT v.*, u.nom AS responsable_nom, u.prenom AS responsable_prenom,
-                (SELECT COUNT(*) FROM inscriptions i WHERE i.id_voyage = v.id_voyage AND i.statut = 'valide') AS nb_inscrits_valides,
-                (v.nb_places - (SELECT COUNT(*) FROM inscriptions i2 WHERE i2.id_voyage = v.id_voyage AND i2.statut = 'valide')) AS places_restantes
+                (SELECT COUNT(*) FROM inscriptions i WHERE i.id_voyage = v.id_voyage AND i.statut IN ('en_attente', 'valide')) AS nb_inscrits_valides,
+                (v.nb_places - (SELECT COUNT(*) FROM inscriptions i2 WHERE i2.id_voyage = v.id_voyage AND i2.statut IN ('en_attente', 'valide'))) AS places_restantes
                 FROM voyages v
                 INNER JOIN users u ON u.id_user = v.id_responsable";
     }

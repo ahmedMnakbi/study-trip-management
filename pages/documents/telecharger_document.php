@@ -13,8 +13,10 @@ if (!$document) {
     exit;
 }
 
-$chemin = __DIR__ . '/../../' . $document['chemin_fichier'];
-if (!is_file($chemin)) {
+$dossierUploads = realpath(__DIR__ . '/../../uploads/documents');
+$chemin = realpath(__DIR__ . '/../../' . $document['chemin_fichier']);
+
+if (!$dossierUploads || !$chemin || strpos($chemin, $dossierUploads . DIRECTORY_SEPARATOR) !== 0 || !is_file($chemin)) {
     http_response_code(404);
     echo 'Fichier introuvable.';
     exit;
@@ -26,4 +28,3 @@ header('Content-Disposition: attachment; filename="' . $nom . '"');
 header('Content-Length: ' . filesize($chemin));
 readfile($chemin);
 exit;
-

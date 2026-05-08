@@ -67,7 +67,7 @@ function verifier_csrf()
     $token = isset($_POST['csrf_token']) ? $_POST['csrf_token'] : '';
     $sessionToken = isset($_SESSION['csrf_token']) ? $_SESSION['csrf_token'] : '';
 
-    if (!is_string($token) || !hash_equals($sessionToken, $token)) {
+    if (!is_string($token) || $token === '' || $sessionToken === '' || !hash_equals($sessionToken, $token)) {
         message_flash('error', 'Formulaire invalide ou session expiree.');
         rediriger('index.php');
     }
