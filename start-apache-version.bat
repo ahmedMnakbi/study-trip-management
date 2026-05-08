@@ -112,9 +112,9 @@ timeout /t 2 >nul
 
 echo.
 echo The site should now be available at:
-echo http://localhost/%PROJECT_NAME%/public/index.php
+echo http://localhost/%PROJECT_NAME%/index.php
 echo.
-start "" "http://localhost/%PROJECT_NAME%/public/index.php"
+start "" "http://localhost/%PROJECT_NAME%/index.php"
 
 del "%DB_CHECK_FILE%" >nul 2>&1
 

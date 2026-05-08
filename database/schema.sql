@@ -4,18 +4,21 @@ CREATE DATABASE IF NOT EXISTS gestion_voyages_etudes
 
 USE gestion_voyages_etudes;
 
+DROP TABLE IF EXISTS paiements;
+DROP TABLE IF EXISTS documents;
+DROP TABLE IF EXISTS inscriptions;
+DROP TABLE IF EXISTS voyages;
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE IF NOT EXISTS users (
   id_user INT AUTO_INCREMENT PRIMARY KEY,
   nom VARCHAR(100) NOT NULL,
   prenom VARCHAR(100) NOT NULL,
   email VARCHAR(190) NOT NULL UNIQUE,
   mot_de_passe VARCHAR(255) NOT NULL,
-  role ENUM('etudiant', 'responsable', 'admin', 'financier') NOT NULL DEFAULT 'etudiant',
+  role ENUM('etudiant', 'responsable', 'admin') NOT NULL DEFAULT 'etudiant',
   statut ENUM('actif', 'inactif') NOT NULL DEFAULT 'actif',
-  date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  date_modification DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-  INDEX idx_users_role (role),
-  INDEX idx_users_statut (statut)
+  date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS voyages (
@@ -27,16 +30,12 @@ CREATE TABLE IF NOT EXISTS voyages (
   date_retour DATE NOT NULL,
   budget DECIMAL(10,2) NOT NULL DEFAULT 0.00,
   nb_places INT NOT NULL,
-  statut ENUM('en_attente', 'valide', 'refuse', 'archive') NOT NULL DEFAULT 'en_attente',
+  statut ENUM('en_attente', 'valide', 'refuse', 'annule') NOT NULL DEFAULT 'en_attente',
   id_responsable INT NOT NULL,
   date_creation DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  date_modification DATETIME NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT fk_voyages_responsable
     FOREIGN KEY (id_responsable) REFERENCES users(id_user)
-    ON DELETE RESTRICT ON UPDATE CASCADE,
-  INDEX idx_voyages_statut (statut),
-  INDEX idx_voyages_destination (destination),
-  INDEX idx_voyages_responsable (id_responsable)
+    ON DELETE RESTRICT ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS inscriptions (
@@ -51,10 +50,7 @@ CREATE TABLE IF NOT EXISTS inscriptions (
   CONSTRAINT fk_inscriptions_voyage
     FOREIGN KEY (id_voyage) REFERENCES voyages(id_voyage)
     ON DELETE CASCADE ON UPDATE CASCADE,
-  UNIQUE KEY uniq_inscription_user_voyage (id_user, id_voyage),
-  INDEX idx_inscriptions_user (id_user),
-  INDEX idx_inscriptions_voyage (id_voyage),
-  INDEX idx_inscriptions_statut (statut)
+  UNIQUE KEY uniq_inscription_user_voyage (id_user, id_voyage)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 CREATE TABLE IF NOT EXISTS documents (
@@ -62,27 +58,14 @@ CREATE TABLE IF NOT EXISTS documents (
   id_user INT NOT NULL,
   id_voyage INT NULL,
   type_document VARCHAR(120) NOT NULL,
+  nom_original VARCHAR(255) NOT NULL,
   chemin_fichier VARCHAR(255) NOT NULL,
+  statut ENUM('en_attente', 'valide', 'refuse') NOT NULL DEFAULT 'en_attente',
   date_upload DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
   CONSTRAINT fk_documents_user
     FOREIGN KEY (id_user) REFERENCES users(id_user)
     ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT fk_documents_voyage
     FOREIGN KEY (id_voyage) REFERENCES voyages(id_voyage)
-    ON DELETE SET NULL ON UPDATE CASCADE,
-  INDEX idx_documents_user (id_user),
-  INDEX idx_documents_voyage (id_voyage)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-CREATE TABLE IF NOT EXISTS paiements (
-  id_paiement INT AUTO_INCREMENT PRIMARY KEY,
-  id_inscription INT NOT NULL,
-  montant DECIMAL(10,2) NOT NULL,
-  date_paiement DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  statut ENUM('en_attente', 'valide', 'refuse') NOT NULL DEFAULT 'en_attente',
-  CONSTRAINT fk_paiements_inscription
-    FOREIGN KEY (id_inscription) REFERENCES inscriptions(id_inscription)
-    ON DELETE CASCADE ON UPDATE CASCADE,
-  INDEX idx_paiements_statut (statut),
-  INDEX idx_paiements_inscription (id_inscription)
+    ON DELETE SET NULL ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
